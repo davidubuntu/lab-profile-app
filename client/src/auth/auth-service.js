@@ -20,7 +20,7 @@ export default class AuthService {
   }
 
   logout = () => {
-    return this.service.post('/logout', {})
+    return this.service.get('/logout', {})
     .then(response => response.data)
   }
 
@@ -28,6 +28,12 @@ export default class AuthService {
     return this.service.get('/loggedin')
     .then(response => response.data)
   }
+
+    edit = (username, campus, course) => {
+    return this.service.post('/edit', {username, campus, course})
+    .then(response => response.data)
+    }
+  
 
 
 

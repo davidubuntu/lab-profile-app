@@ -8,15 +8,28 @@ import { Route, Switch} from 'react-router-dom';
 
 
 class App extends Component {
+
+    constructor(props){
+      super(props)
+      this.state = { loggedInUser: null };
+    }
+    
+
+    getTheUser= (userObj) => {
+      this.setState({...this.state,loggedInUser: userObj})
+    }
+    
   render() {
     return (
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/login" component={Login}/>
+          <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser}/>}/>
+          <Route exact path="/login" render={() => <Login getUser={this.getTheUser}/>}/>
         </Switch>
+       {/*  if(this.state.islogged){<rediect></rediect>}else{} */}
       </div>
+
     );
   }
 }
