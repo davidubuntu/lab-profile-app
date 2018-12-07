@@ -17,8 +17,8 @@ export default class Signup extends Component {
         this.service.signup(username,password,campus,course)
         .then( response => {
             console.log(response);
-            this.setState({...this.state,username: "", password: "",campus: "",course:"",redirect:true});
             this.props.getUser(response);
+            this.setState({...this.state,username: "", password: "",campus: "",course:"",redirect:true});
         })
         .catch( error => console.log(error) )
     }
@@ -29,7 +29,7 @@ export default class Signup extends Component {
   }
 
   render() {
-      if(this.state && this.state.redirect){return <Redirect to ="/"/>}
+      if(this.state && this.state.redirect){return <Redirect to ="/profile"/>}
     return (
      <form onSubmit={this.handleFormSubmit}>
          <label>Username:</label>

@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home/Home';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile'
 import { Route, Switch} from 'react-router-dom';
 
 
@@ -15,7 +16,7 @@ class App extends Component {
     }
     
 
-    getTheUser= (userObj) => {
+    getTheUser = (userObj) => {
       this.setState({...this.state,loggedInUser: userObj})
     }
     
@@ -23,7 +24,8 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" render={() => <Home/>}/>
+          <Route exact path="/profile" render={() => <Profile/>}/>
           <Route exact path="/signup" render={() => <Signup getUser={this.getTheUser}/>}/>
           <Route exact path="/login" render={() => <Login getUser={this.getTheUser}/>}/>
         </Switch>
